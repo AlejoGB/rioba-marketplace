@@ -1,5 +1,5 @@
 from django.db import models
-
+from accounts.models import CustomUser
 # Create your models here.
 
 class Emprendimiento(models.Model):
@@ -14,7 +14,7 @@ class Emprendimiento(models.Model):
     cobertura = models.CharField(max_length=10)    # Distancia de cobertura de envios -> podria ser una lista de barrios o un medidor de distancia desde direccion
     contacto = models.CharField(max_length=100)    # Lista con mail, telefono, web, instagram, etc
     envio = models.CharField(max_length=100)       # envio a cargo del local? costo?
-    horarios = models.Charfield(max_length=100)    # disponibilidad para envios 
+    horarios = models.CharField(max_length=100)    # disponibilidad para envios 
     # logo = IMAGEN
 
     
