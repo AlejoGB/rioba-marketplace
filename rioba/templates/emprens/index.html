@@ -4,16 +4,16 @@
 {% block content %} 
 
 <img src="{% static 'img/logo.PNG' %}" class="logo" alt="rioba" style="width:200px;height:100px;" >
-<ul>
-    <li>Emprens</li>
-    <p><a href="{% url 'nosotros' %}">Nosotros</a></p>
-    {% if user.is_authenticated %}
-    <li>Bienvenido {{ user.email }}</li>
-    <p><a href="{% url 'logout' %}">Cerrar Sesión</a></p>
 
-    {% else %}
-    <p><a href="{% url 'registro' %}">registro</a></p>
-    <p><a href="{% url 'login' %}">Iniciar Sesión</a></p>
-    {% endif %}
-  </ul>
+    <h1>Emprens</h1>
+
+  {% for obj in object_list %}
+  <img src='{{ obj.logo.url }}' class='img-fluid'  style="width:200px;height:100px;" /><br/>
+  {{ obj.nombre }}<br/>
+  {{ obj.rubro  }}
+  {{ obj.subrubro}}<br/>
+  {{ obj.direccion }}
+  <h1>~~~~~~~~</h1>
+  {% endfor %}
+
 {% endblock %} 

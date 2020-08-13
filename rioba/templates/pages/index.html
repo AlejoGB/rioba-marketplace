@@ -4,8 +4,14 @@
 {% block content %} 
 
 <img src="{% static 'img/logo.PNG' %}" class="logo" alt="rioba"  >
-<ul>
     <h1>Index</h1>
-    
-</ul>
+    {% for obj in emprens %}
+    <img src='{{ obj.logo.url }}' class='img-fluid'  style="width:200px;height:100px;" /><br/>
+    {{ obj.nombre }}<br/>
+    {{ obj.rubro  }}
+    {{ obj.subrubro}}<br/>
+    {{ obj.direccion }}
+    <h1>~~~~~~~~</h1>
+    {% endfor %}
+
 {% endblock %} 
