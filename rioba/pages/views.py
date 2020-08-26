@@ -8,7 +8,7 @@ class index(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data( **kwargs)
         context['emprens'] = Emprendimiento.objects.all()
-        print(context)
+        #print(context)
         return context
 
 

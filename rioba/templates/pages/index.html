@@ -5,13 +5,9 @@
 
 <img src="{% static 'img/logo.PNG' %}" class="logo" alt="rioba"  >
     <h1>Index</h1>
+    <div class="card-deck">
     {% for obj in emprens %}
-    <img src='{{ obj.logo.url }}' class='img-fluid'  style="width:200px;height:100px;" /><br/>
-    {{ obj.nombre }}<br/>
-    {{ obj.rubro  }}
-    {{ obj.subrubro}}<br/>
-    {{ obj.direccion }}
-    <h1>~~~~~~~~</h1>
+    {% include 'emprens/card.html' %}
     {% endfor %}
-
-{% endblock %} 
+    </div>
+{% endblock content %} 

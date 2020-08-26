@@ -6,14 +6,19 @@
 <img src="{% static 'img/logo.PNG' %}" class="logo" alt="rioba" style="width:200px;height:100px;" >
 
     <h1>Emprens</h1>
-
+  <div class='container'>
+    <div class='row'>    
   {% for obj in object_list %}
-  <img src='{{ obj.logo.url }}' class='img-fluid'  style="width:200px;height:100px;" /><br/>
-  {{ obj.nombre }}<br/>
-  {{ obj.rubro  }}
-  {{ obj.subrubro}}<br/>
-  {{ obj.direccion }}
-  <h1>~~~~~~~~</h1>
+    <div class="col">
+    {{ forloop.counter }}
+    {% include 'emprens/card.html' %}
+  {% if forloop.counter|divisibleby:3 %}
+    </div></div><div class='row'><div class='col-12'><hr/></div>
+  {% else %}
+    </div>
+  {% endif %}
   {% endfor %}
-
+  
+    </div>
+  </div>
 {% endblock %} 

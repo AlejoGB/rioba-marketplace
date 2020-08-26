@@ -18,6 +18,8 @@ from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+
+
 #from emprens.views import emprensListView , emprensDetailView
 urlpatterns = [
     path('sociallogin/', TemplateView.as_view(template_name='social_app/index.html')), # esto se puede sacar es una url de prueba
@@ -27,6 +29,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('allauth.urls')),
     path('emprens/', include('emprens.urls')),
+    path('example/', TemplateView.as_view(template_name='bootstrap/example.html'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG is True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
