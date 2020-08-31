@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 #   CRISPY FORMS
     'crispy_forms',
+#   API REST
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
