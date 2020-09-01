@@ -31,7 +31,7 @@ urlpatterns = [
     path('emprens/', include('emprens.urls')),
     path('example/', TemplateView.as_view(template_name='bootstrap/example.html')),
     #BROWSEABLE REST API
-    path(r'api-auth/', include('rest_framework.urls'))
+    path('api/emprens/', include('emprens.api.urls')) # , namespace='api-emprens')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG is True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

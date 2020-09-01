@@ -64,7 +64,7 @@ class emprensSlugView(DetailView):
         print(instance.id)
 #        try:
 #            subinstance = Producto.objects.get( emprendimiento=instance.id )
-#        return instance
+        return instance
 
 
 

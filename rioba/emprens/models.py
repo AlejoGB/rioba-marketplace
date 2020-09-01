@@ -48,17 +48,26 @@ class EmprendimientoManager(models.Manager):
 ##############################################################################################################
 class Emprendimiento(models.Model):
     # PUBLIC
+    #descripcion
     nombre                  = models.CharField(max_length=50)
     slug                    = models.SlugField(blank=True , unique=True)
     rubro                   = models.CharField(max_length=50)     # definitivamente lista desplegable
     subrubro                = models.CharField(max_length=50)     # lista desplegable?
     descripcion             = models.CharField(max_length=200)
     logo                    = models.ImageField(upload_to=upload_image_path , null=True , blank=True)
+
+    #contacto
+    cont_mail               = models.CharField(max_length=100)
+    cont_insta              = models.CharField(max_length=100)
+    cont_whatsapp           = models.CharField(max_length=100)
+
+    #ubicacion
     direccion               = models.CharField(max_length=200)   # validar?
-    barrio                  = models.CharField(max_length= 70)      # Ciudad (lista desplegable?)
+    barrio                  = models.CharField(max_length= 50)      # Ciudad (lista desplegable?)
     ciudad                  = models.CharField(max_length = 50)     # Ciudad (lista desplegable?)
-    cobertura               = models.CharField(max_length=10)    # Distancia de cobertura de envios -> podria ser una lista de barrios o un medidor de distancia desde direccion
-    contacto                = models.CharField(max_length=100)    # Lista con mail, telefono, web, instagram, etc
+
+    #entrega
+    cobertura               = models.CharField(max_length=100)    # Distancia de cobertura de envios -> podria ser una lista de barrios o un medidor de distancia desde direccion
     envio                   = models.CharField(max_length=100)       # envio a cargo del local? costo?
     horarios                = models.CharField(max_length=100)    # disponibilidad para envios
     is_published            = models.BooleanField(default=True)
@@ -89,6 +98,7 @@ pre_save.connect(emprendimiento_pre_save_receiver , sender=Emprendimiento)
 ##############################################################################################################
 
 class Producto(models.Model):
+
     emprendimiento          = models.ForeignKey('Emprendimiento', on_delete=models.CASCADE, null=True)
     nombre                  = models.CharField(max_length=120)
     categoria               = models.CharField(max_length=30)
@@ -96,6 +106,7 @@ class Producto(models.Model):
     imagen                  = models.ImageField(upload_to=upload_image_path, null=True , blank=True)
     banner                  = models.ImageField(upload_to=upload_image_path, null=True , blank=True)
     precio                  = models.IntegerField(default=0)
+    inmediato               = models.BooleanField(default=False)
     stock                   = models.BooleanField(default=True)
 
     def __str__(self):
